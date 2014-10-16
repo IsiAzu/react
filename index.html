@@ -2,102 +2,179 @@
 <html>
   <head>
     <title>Isi's React Assignment</title>
-      <style>
-          body{
-              background-color: #000;
-              color: #0f0;
-              font-size: 12pt;
-              margin: 0;
-              padding: 0;
-          }
-          .spacer.s2{
-              height: 100px;
-          }
-          h1{
-              min-height: 100px;
-              text-align: center;
-          }
-          #myimg{
-              display: inline;
-              width: auto;
-              height: auto;
-              padding: 100px;
-          }
-          #pin
-          {
-              width: 100%;
-              height: 100%;
-              position: relative;
-          }
-          #intro
-          {
-              width: 100%;
-              height: 100%;
-              background-color: #fff;
-          }
-
-          #intro .col
-          {
-              padding: 0;
-          }
-          #scripts{
-              display: none;
-          }
-          #show{
-              display: inline;
-          }
-      </style>
   </head>
+  <style>
+      html, body {
+          /*font-size: larger;*/
+          height: 100%
+      }
+
+      body {
+          font-family: "Arial", sans-serif;
+          font-size: 13px;
+          /*color: #181818;*/
+          /*background-color: #bababa;*/
+      }
+
+      .spacer {
+          /*display: block;*/
+          text-align: center;
+          min-height: 100px;
+      }
+
+      .spacer.s0 {
+          border-color: #ffb900;
+          border: dashed;
+          min-height: 1px;
+      }
+
+      .spacer.s2 {
+          min-height: 200px;
+      }
+
+      .spacer.s3 {
+          min-height: 300px;
+      }
+
+      .header {
+          text-align: center;
+          font-size: 4em;
+          font-weight: bold;
+          padding: 20px;
+      }
+
+      #contentWrapper, #tutwrapper {
+          height: 100%;
+      }
+
+      #title {
+          text-align: center;
+          position: relative;
+          height: 100%;
+          min-height: 500px;
+          min-width: 100%;
+      }
+
+      #description {
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          width: 600px;
+          height: 200px;
+          margin: -100px auto auto -300px;
+      }
+
+      div {
+          display: block;
+          border-color: #3b1440;
+          border: dashed;
+          border-width: thin;
+      }
+
+      h1 {
+          margin: 0;
+          /*font-style: italic;*/
+          /*font-weight: bold;*/
+          font-size: 40px;
+      }
+
+      h2{
+          margin-bottom: 20px;
+          font-size: 20px;
+      }
+
+      #images {
+          padding: 20px;
+      }
+  </style>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js" ></script>
+  <script type="text/javascript" src="jquery.scrollmagic.js"></script>
+  <script type="text/javascript" src="TweenMax.min.js"></script>
+  <script type="text/javascript" src="jquery.scrollmagic.debug.js"></script>
+  <script type="text/javascript" src="scripts.js"></script>
+
   <body>
-    YOUR PROJECT HERE
-    <div id="header">
-        <h1> This is how you Tie </h1>
-    </div>
 
-    <nav id="nav">
-        Standard Knot<br>
-        Two Loop Knot<br>
-        Surgeons Knot<br>
-        FreedomKnot<br>
-        Double KNot<br>
-    </nav>
+  <div id="contentWrapper">
+      <div id="tutwrapper">
 
-    <div id="section">
+          <section id="title">
+             <div id="description">
+                <h1>Get Ready to Lace Up!</h1>
+                <h3>Let's start with a basic knot</h3>
+             </div>
+           </section>
 
-    <div class="pin-spacer">
-        <!--<div class="spacer s2"></div>-->
-        <div></div>
-        <div id="pin">
+          <div class="spacer s2"></div>
+          <div class="spacer s0" id="pin"></div>
 
-                <section id="intro">
-                    <div class="col">
-                        <img src="howtotie/tie-1-2.jpg">
-                        <img src="howtotie/tie-2-2.jpg">
-                        <img src="howtotie/tie-3-2.jpg">
-                        <img src="howtotie/tie-4-2.jpg">
-                        <img src="howtotie/tie-5-2.jpg">
-                        <img src="howtotie/tie-6-2.jpg">
-                    </div>
-                </section>
+          <section id="roller">
+
+              <div class="header" id="this">
+                  <p>This</p>
+              </div>
+
+              <div class="header" id="is">
+                  <p>Is</p>
+              </div>
+
+              <div class="header" id="how">
+                  <p>How</p>
+              </div>
+
+              <div class="header" id="you">
+                  <p>You</p>
+              </div>
+
+              <div class="header" id="tie">
+                  <p>Tie</p>
+              </div>
+
+          </section>
+
+          <div class="spacer s3"></div>
+          <div class="spacer s0"></div>
+
+          <section class="shoewrap">
+              <div id="container" class="scrollcontainer">
+                  <section class="shoedemo">
+                      <div class="spacer s2"></div>
+
+                      <div class="spacer s0"></div>
+
+                      <div id="images">
+
+                      </div>
+
+                      <div class="spacer s3"></div>
+                  </section>
+              </div>
+          </section>
+
+          <div class="spacer s3"></div>
+          <div class="spacer s0"></div>
+
+          <section id="end">
+
+              <div class="header">
+                  <p>Your</p>
+              </div>
+
+              <div class="header">
+                  <p>Shoes</p>
+              </div>
 
 
-            <img id="myimg" class="box" style=""><br>
+          </section>
 
-            <div class="spacer s2"></div>
+          <div class="spacer s3"></div>
+          <div class="spacer s0"></div>
 
-        </div>
-
-    </div>
-
-    </div>
-
-
-    <div id="scripts">
-      <script type="text/javascript" src="main.js"></script>
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/two.js/0.4.0/two.min.js"></script>
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
-      <script type="text/javascript" src="jquery.scrollmagic.js"></script>
-      <script type="text/javascript" src="jquery.scrollmagic.debug.js"></script>
+      </div>
   </div>
+
+
+
   </body>
 </html>
