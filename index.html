@@ -16,6 +16,12 @@
           /*background-color: #bababa;*/
       }
 
+      img {
+          display: inherit;
+          width: inherit;
+          height: 400px;
+      }
+
       .spacer {
           /*display: block;*/
           text-align: center;
@@ -23,8 +29,8 @@
       }
 
       .spacer.s0 {
-          border-color: #ffb900;
-          border: dashed;
+          /*border-color: #ffb900;*/
+          /*border: dashed;*/
           min-height: 1px;
       }
 
@@ -66,8 +72,8 @@
 
       div {
           display: block;
-          border-color: #3b1440;
-          border: dashed;
+          /*border-color: #3b1440;*/
+          /*border: dashed;*/
           border-width: thin;
       }
 
@@ -141,9 +147,11 @@
                   <section class="shoedemo">
                       <div class="spacer s2"></div>
 
-                      <div class="spacer s0"></div>
+                      <div class="spacer s0" id="trigger"></div>
 
-                      <div id="images">
+                      <div id="imagesequence">
+
+                          <img id="shoe_seq"><br>
 
                       </div>
 
