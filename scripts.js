@@ -29,7 +29,7 @@ $(document).ready(function($) {
 
     var images = [];
     for (var i = 1; i < 64; i++){
-        images.push("howtotie/tie-" + (i) + "-2.jpg");
+        images.push("howtotie/htt-" + (i) + ".jpg");
     }
 
     // TweenMax can tween any property of any object. We use this object to cycle through the array
@@ -38,9 +38,9 @@ $(document).ready(function($) {
     // create tween
     var tween = TweenMax.to(obj, 0.5,
         {
-            curImg: images.length - 1,	// animate property curImg to number of images
+            curImg: images.length - 1,	    // animate property curImg to number of images
             roundProps: "curImg",				// only integers so it can be used as an array index
-            repeat: 3,									// repeat 3 times
+            repeat: 0,							// repeat 3 times
             immediateRender: true,			// load first image automatically
             ease: Linear.easeNone,			// show every image the same amount of time
             onUpdate: function () {
