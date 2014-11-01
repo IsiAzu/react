@@ -16,11 +16,6 @@
           /*background-color: #bababa;*/
       }
 
-      img {
-          display: inherit;
-          width: inherit;
-          height: 400px;
-      }
 
       .spacer {
           /*display: block;*/
@@ -71,12 +66,21 @@
       }
 
       div {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
           display: block;
           /*border-color: #3b1440;*/
           /*border: dashed;*/
           border-width: thin;
       }
 
+      img {
+          /*padding: 10px;*/
+          display: block;
+          margin-left: auto;
+          margin-right: auto
+      }
       h1 {
           margin: 0;
           /*font-style: italic;*/
@@ -89,16 +93,13 @@
           font-size: 20px;
       }
 
-      #images {
-          padding: 20px;
-      }
   </style>
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js" ></script>
   <script type="text/javascript" src="jquery.scrollmagic.js"></script>
   <script type="text/javascript" src="TweenMax.min.js"></script>
   <script type="text/javascript" src="jquery.scrollmagic.debug.js"></script>
-  <script type="text/javascript" src="scripts.js"></script>
+  <!--<script type="text/javascript" src="scripts.js"></script>-->
 
   <body>
 
@@ -149,13 +150,56 @@
 
                       <div class="spacer s0" id="trigger"></div>
 
-                      <div id="imagesequence">
+                      <div id="image_sequence"> <!-- should be pinned -->
 
                           <img id="shoe_seq"><br>
 
                       </div>
 
                       <div class="spacer s3"></div>
+                      <script>
+
+                          $(document).ready(function($) {
+                              // define images
+
+                              var images = [];
+                              for (var i = 1; i < 64; i++){
+                                  images.push("howtotie/htt-" + (i) + ".jpg");
+                              }
+
+                              // TweenMax can tween any property of any object. We use this object to cycle through the array
+                              var obj = {curImg: 0};
+
+                              // create tween
+                              var tween = TweenMax.to(obj, 0.5,
+                                      {
+                                          curImg: images.length - 1,	    // animate property curImg to number of images
+                                          roundProps: "curImg",				// only integers so it can be used as an array index
+                                          repeat: 0,							// repeat 3 times
+                                          immediateRender: true,			// load first image automatically
+                                          ease: Linear.easeNone,			// show every image the same amount of time
+                                          onUpdate: function () {
+                                              $("#shoe_seq").attr("src", images[obj.curImg]); // set the image source
+                                          }
+                                      }
+                              );
+
+                              // init controller
+                              var controller = new ScrollMagic();
+
+                              // build scene
+                              var scene = new ScrollScene({triggerElement: "#trigger", duration: 400, offset: 200})
+                                      .setTween(tween)
+                                      .setPin("#image_sequence")
+                                      .addTo(controller);
+
+
+
+                              // show indicators (requires debug extension)
+                              scene.addIndicators();
+
+                          });
+                      </script>
                   </section>
               </div>
           </section>

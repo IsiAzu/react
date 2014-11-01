@@ -55,8 +55,8 @@ $(document).ready(function($) {
     // build scene
     var scene = new ScrollScene({triggerElement: "#trigger", duration: 400})
         .setTween(tween)
-        .addTo(controller)
-        .duration(400);
+        .setPin("image_sequence")
+        .addTo(controller);
 
 
 
