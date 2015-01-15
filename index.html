@@ -146,7 +146,7 @@
           <div class="spacer s0"></div>
 
           <section class="shoewrap">
-              <div id="container" class="scrollcontainer" style="background-color: #b60022;">
+              <div id="container" class="scrollcontainer" style="background-color: none;">
                   <section class="shoedemo">
                       <div class="spacer s2"></div>
 
@@ -158,13 +158,23 @@
 
                       </div>
 
-                      <div class="spacer s3"></div>
+                      <div class="spacer s2"></div>
+
+                      <div class="spacer s0" id="trigger2"></div>
+
+                      <div id="image_sequence2" > <!-- should be pinned -->
+
+                          <img id="two_seq" src="howtotietwo/htt-1.jpg"><br>
+
+                      </div>
+
                       <script>
                           $(document).ready(function($) {
                               // define images
 
                               var images = [];
                               var imgs = [];
+                              var secondImages = [];
 
                               function preLoad(c) {
                                   for (var i = 0; i < c.length; i++) {
@@ -175,12 +185,16 @@
                               }
 
 
-                              for (var i = 1; i < 64; i++){
-
-                                  imgs.push("howtotie/htt-" + (i) + ".jpg");
-
+                              for (var i = 1; i < 84; i++){
+                                  secondImages.push("howtotietwo/htt-" + (i) + ".jpg");
                               }
 
+                              for (var i = 1; i < 64; i++){
+                                  imgs.push("howtotie/htt-" + (i) + ".jpg");
+                              }
+
+                              console.log(secondImages);
+                              console.log(imgs);
 
                               preLoad(
                                       imgs
@@ -199,29 +213,45 @@
                                           ease: Linear.easeNone,			// show every image the same amount of time
                                           onUpdate: function () {
                                               $("#shoe_seq").attr("src", imgs[obj.curImg]); // set the image source
-                                              console.log($('#shoe_seq').src);
+//                                              console.log($('#shoe_seq').src);
+                                          }
+                                      }
+                              );
+
+
+                              var obj2 = {cur2Img: 0};
+                              var tween_two = TweenMax.to(obj2, 0.5,
+                                      {
+                                          cur2Img: secondImages.length - 1,	    // animate property curImg to number of images
+                                          roundProps: "curImg",				// only integers so it can be used as an array index
+                                          repeat: 0,							// repeat 3 times
+                                          immediateRender: true,			// load first image automatically
+                                          ease: Linear.easeNone,			// show every image the same amount of time
+                                          onUpdate: function () {
+                                              $("#two_seq").attr("src", secondImages[obj2.curImg]); // set the image source
+//                                              console.log($('#two_seq').src);
                                           }
                                       }
                               );
 
                               // init controller
                               var controller = new ScrollMagic();
+//                              var controller2 = new ScrollMagic();
 
                               // build scene
-                              var scene = new ScrollScene({triggerElement: "#trigger", duration: 400, offset: 200})
+                              var scene = new ScrollScene({triggerElement: "#trigger", duration: 900, offset: 200})
                                       .setTween(tween)
                                       .setPin("#image_sequence")
                                       .addTo(controller);
 
-                              var scene_two = new ScrollScene({triggerElement: "#trigger", duration: 400, offset: 200})
-                                      .setTween(tween)
-                                      .setPin("#image_sequence")
+                              var scene_two = new ScrollScene({triggerElement: "#trigger2", duration: 900, offset: 200})
+                                      .setTween(tween_two)
+                                      .setPin("#image_sequence2")
                                       .addTo(controller);
-
-
 
                               // show indicators (requires debug extension)
                               scene.addIndicators();
+                              scene_two.addIndicators();
 
                           });
                       </script>
@@ -234,13 +264,13 @@
 
           <section id="end">
 
-              <div class="header">
-                  <p>Your</p>
-              </div>
+              <!--<div class="header">-->
+                  <!--<p>Your</p>-->
+              <!--</div>-->
 
-              <div class="header">
-                  <p>Shoes</p>
-              </div>
+              <!--<div class="header">-->
+                  <!--<p>Shoes</p>-->
+              <!--</div>-->
 
 
           </section>
