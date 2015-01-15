@@ -118,41 +118,41 @@
           <div class="spacer s2"></div>
           <div class="spacer s0" id="pin"></div>
 
-          <section id="roller">
+          <!--<section id="roller">-->
 
-              <div class="header" id="this">
-                  <p>This</p>
-              </div>
+              <!--<div class="header" id="this">-->
+                  <!--<p>This</p>-->
+              <!--</div>-->
 
-              <div class="header" id="is">
-                  <p>Is</p>
-              </div>
+              <!--<div class="header" id="is">-->
+                  <!--<p>Is</p>-->
+              <!--</div>-->
 
-              <div class="header" id="how">
-                  <p>How</p>
-              </div>
+              <!--<div class="header" id="how">-->
+                  <!--<p>How</p>-->
+              <!--</div>-->
 
-              <div class="header" id="you">
-                  <p>You</p>
-              </div>
+              <!--<div class="header" id="you">-->
+                  <!--<p>You</p>-->
+              <!--</div>-->
 
-              <div class="header" id="tie">
-                  <p>Tie</p>
-              </div>
+              <!--<div class="header" id="tie">-->
+                  <!--<p>Tie</p>-->
+              <!--</div>-->
 
-          </section>
+          <!--</section>-->
 
-          <div class="spacer s3"></div>
+          <!--<div class="spacer s3"></div>-->
           <div class="spacer s0"></div>
 
           <section class="shoewrap">
-              <div id="container" class="scrollcontainer">
+              <div id="container" class="scrollcontainer" style="background-color: #b60022;">
                   <section class="shoedemo">
                       <div class="spacer s2"></div>
 
                       <div class="spacer s0" id="trigger"></div>
 
-                      <div id="image_sequence"> <!-- should be pinned -->
+                      <div id="image_sequence" > <!-- should be pinned -->
 
                           <img id="shoe_seq"><br>
 
@@ -160,14 +160,31 @@
 
                       <div class="spacer s3"></div>
                       <script>
-
                           $(document).ready(function($) {
                               // define images
 
                               var images = [];
-                              for (var i = 1; i < 64; i++){
-                                  images.push("howtotie/htt-" + (i) + ".jpg");
+                              var imgs = [];
+
+                              function preLoad(c) {
+                                  for (var i = 0; i < c.length; i++) {
+                                      images[i] = new Image();
+                                      images[i].src = c[i];
+//                                      console.log("preloaded: " + c[i]);
+                                  }
                               }
+
+
+                              for (var i = 1; i < 64; i++){
+
+                                  imgs.push("howtotie/htt-" + (i) + ".jpg");
+
+                              }
+
+
+                              preLoad(
+                                      imgs
+                              );
 
                               // TweenMax can tween any property of any object. We use this object to cycle through the array
                               var obj = {curImg: 0};
@@ -175,13 +192,14 @@
                               // create tween
                               var tween = TweenMax.to(obj, 0.5,
                                       {
-                                          curImg: images.length - 1,	    // animate property curImg to number of images
+                                          curImg: imgs.length - 1,	    // animate property curImg to number of images
                                           roundProps: "curImg",				// only integers so it can be used as an array index
                                           repeat: 0,							// repeat 3 times
                                           immediateRender: true,			// load first image automatically
                                           ease: Linear.easeNone,			// show every image the same amount of time
                                           onUpdate: function () {
-                                              $("#shoe_seq").attr("src", images[obj.curImg]); // set the image source
+                                              $("#shoe_seq").attr("src", imgs[obj.curImg]); // set the image source
+                                              console.log($('#shoe_seq').src);
                                           }
                                       }
                               );
@@ -191,6 +209,11 @@
 
                               // build scene
                               var scene = new ScrollScene({triggerElement: "#trigger", duration: 400, offset: 200})
+                                      .setTween(tween)
+                                      .setPin("#image_sequence")
+                                      .addTo(controller);
+
+                              var scene_two = new ScrollScene({triggerElement: "#trigger", duration: 400, offset: 200})
                                       .setTween(tween)
                                       .setPin("#image_sequence")
                                       .addTo(controller);
