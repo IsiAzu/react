@@ -160,11 +160,11 @@
 
                       <div class="spacer s2"></div>
 
-                      <div class="spacer s0" id="trigger2"></div>
+                      <div class="spacer s0" id="trigger2">Here's a quicker version</div>
 
                       <div id="image_sequence2" > <!-- should be pinned -->
 
-                          <img id="two_seq" src="howtotietwo/htt-1.jpg"><br>
+                          <img id="two_seq"><br>
 
                       </div>
 
@@ -173,6 +173,7 @@
                               // define images
 
                               var images = [];
+                              var images2 = [];
                               var imgs = [];
                               var secondImages = [];
 
@@ -199,6 +200,9 @@
                               preLoad(
                                       imgs
                               );
+                              preLoad(
+                                      secondImages
+                              );
 
                               // TweenMax can tween any property of any object. We use this object to cycle through the array
                               var obj = {curImg: 0};
@@ -223,12 +227,12 @@
                               var tween_two = TweenMax.to(obj2, 0.5,
                                       {
                                           cur2Img: secondImages.length - 1,	    // animate property curImg to number of images
-                                          roundProps: "curImg",				// only integers so it can be used as an array index
+                                          roundProps: "cur2Img",				// only integers so it can be used as an array index
                                           repeat: 0,							// repeat 3 times
                                           immediateRender: true,			// load first image automatically
                                           ease: Linear.easeNone,			// show every image the same amount of time
                                           onUpdate: function () {
-                                              $("#two_seq").attr("src", secondImages[obj2.curImg]); // set the image source
+                                              $("#two_seq").attr("src", secondImages[obj2.cur2Img]); // set the image source
 //                                              console.log($('#two_seq').src);
                                           }
                                       }
@@ -260,9 +264,12 @@
           </section>
 
           <div class="spacer s3"></div>
+          <!--<div class="spacer s3"></div>-->
           <div class="spacer s0"></div>
 
-          <section id="end">
+          <section id="end" style="height: 600px">
+
+              <h1 style="text-align: center; margin: 200px">Thanks!</h1>
 
               <!--<div class="header">-->
                   <!--<p>Your</p>-->
@@ -274,9 +281,6 @@
 
 
           </section>
-
-          <div class="spacer s3"></div>
-          <div class="spacer s0"></div>
 
       </div>
   </div>
